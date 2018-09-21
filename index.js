@@ -76,11 +76,14 @@ var publicId = '';
                 cloud_name: 'ceriously',
                 upload_preset: 'tracefashion-backers-lxbiusub',
                 resource_type: 'image',
-                max_image_width: 256,
-                max_image_height: 256,
+                min_image_width: 256,
+                min_image_height: 256,
+                max_image_width: 1024,
+                max_image_height: 1024,
                 multiple: false, // single image
                 cropping_aspect_ratio: 1, // square image
                 cropping_coordinates_mode: 'custom',
+                cropping_show_dimensions: true,
                 cropping_validate_dimensions: true,
                 cropping: 'server',
                 theme: 'purple'
