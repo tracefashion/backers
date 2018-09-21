@@ -9,8 +9,8 @@ var publicId = '';
         function sha256(str) {
             // We transform the string into an arraybuffer.
             var buffer = new TextEncoder("utf-8").encode(str);
-            return crypto.subtle.digest("SHA-256", buffer).then(function (hash) {
-                return hex(hash);
+            return crypto.subtle.digest("SHA-256", buffer).then(function (digest) {
+                return hex(digest);
             });
         }
 
@@ -38,12 +38,46 @@ var publicId = '';
 
         function handleChangeEmail() {
             var emailaddress = email.value;
-            sha256(emailaddress).then(function(digest) {
-                publicId = digest;
-                var show = isBacker(digest);
-                group.style.opacity = show ? '1' : '0';
-                help.textContent = show ? 'Great! Now upload your image!' : 'That email address is not a backer';
+            sha256(emailaddress).then(function(hash) {
+                publicId = hash;
+                var backer = isBacker(hash);
+                group.style.opacity = backer ? '1' : '0';
+                if (!backer) {
+                    help.textContent = 'That email address is not a backer';
+                } else {
+                    var url = getUrl(hash);
+                    doesImageExist(url, function(exists) {
+                        if (exists) {
+                            img.src = url;
+                            img.width = '256';
+                            img.height = '256';
+                            btn.style.display = 'none';
+                            help.textContent = 'You already uploaded an image';
+                        } else {
+                            btn.style.display = 'inline-block';
+                            img.src = "https://res.cloudinary.com/ceriously/image/upload/avatar_ax5bsq.png";
+                            help.textContent = 'Great! Now upload your image, crop to 300x300';
+                        }
+                    });
+                }
             });
+        }
+
+        function doesImageExist(src, cb) {
+            var img = new Image();
+            img.onload = function() {
+                cb(true);
+                img = null;
+            };
+            img.onerror = function() {
+                cb(false);
+                img = null;
+            };
+            img.src = src;
+        }
+
+        function getUrl(id) {
+            return 'https://res.cloudinary.com/ceriously/image/upload/tracefashion-backers/' + id +'.jpg';
         }
 
         function handleCloseWidget(err, list) {
@@ -63,6 +97,7 @@ var publicId = '';
                 img.src = url;
                 img.width = '256';
                 img.height = '256';
+                btn.style.display = 'none';
                 setTimeout(function() {
                     alert('Thanks, you look great! You will see your image on our website soon.');
                     window.location.href = 'https://www.tracefashion.co';
