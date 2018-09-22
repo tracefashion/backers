@@ -37,6 +37,10 @@ function isBacker(text) {
 
 function handleChangeEmail() {
     var emailaddress = email.value;
+    if (emailaddress.toLowerCase() !== emailaddress) {
+        help.textContent = 'Your email address must be all lowercase';
+        return;
+    }
     sha256(emailaddress).then(function(hash) {
         publicId = hash;
         var backer = isBacker(hash);
