@@ -7,16 +7,18 @@
     <title>Upload your image</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
     <style>
-        body { background: linear-gradient(to bottom, #ff7cd8 0%,#fd89d7 32%,#fba6e1 50%,#fcecfc 90%,#ffffff 100%); }
-        .container { max-width: 500px; min-height: 100vh; }
-        h1 { margin-top: 20vh; }
+        body { min-height: 100vh; background: linear-gradient(to bottom, #efdce4 0%,#ffffff 100%); }
+        .container { width: auto; max-width: 500px; }
         img { cursor: pointer; }
         #group { opacity: 0; transition: opacity 0.6s; text-align: center; }
+        footer {  position: absolute; bottom: 0; width: 100%; height: 60px; line-height: 60px; color: #555; }
+        footer a { text-decoration: underline; color: #555; }
+        footer .container { padding-right: 65px; padding-left: 65px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Take My Picture!</h1>
+        <h1 class="mt-5">Take My Picture!</h1>
         <p class="text-muted">Thanks for supporting our Kickstarter!</p>
         <form>
             <div class="form-group">
@@ -33,6 +35,13 @@
             <!--<button type="submit" class="btn btn-dark">Submit</button>-->
         </form>
     </div>
+    <footer>
+        <div class="container">
+            &copy; Trace Fashion, LLC
+            | <a href="https://www.tracefashion.co/">Home</a>
+            | <a href="https://www.tracefashion.co/contact/">Contact</a>
+        </div>
+    </footer>
     <script src="https://widget.cloudinary.com/global/all.js"></script>
     <script src="common.js"></script>
     <script src="index.js"></script>

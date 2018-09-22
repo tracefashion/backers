@@ -55,7 +55,7 @@ function handleChangeEmail() {
                 } else {
                     btn.style.display = 'inline-block';
                     img.src = "https://res.cloudinary.com/ceriously/image/upload/avatar_ax5bsq.png";
-                    help.textContent = 'Great! Now upload your image, crop to 300x300';
+                    help.textContent = 'Hi Friend! Now upload your image, crop to 300x300';
                 }
             });
         }
