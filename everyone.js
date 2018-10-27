@@ -22,6 +22,4 @@ backers.forEach(function(hash) {
         */
     };
     img.src = getUrl(hash);
-})
-
-content.innerHTML = html;
+});
