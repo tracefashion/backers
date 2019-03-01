@@ -1,5 +1,12 @@
 {
     "name": "backers",
-    "alias": "backers.tracefashion.co",
-    "type": "static"
-}
+    "alias": ["backers.tracefashion.co"],
+    "version": 2,
+    "builds": [
+      {
+        "src": "*",
+        "use": "@now/static"
+      }
+    ]
+  }
+  
