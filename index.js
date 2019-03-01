@@ -4,8 +4,6 @@ var fallbackUrl = 'https://res.cloudinary.com/ceriously/image/upload/avatar_ax5b
 function newImage() {
     var img = new Image();
     img.className = 'rounded-circle';
-    img.width = '64';
-    img.height = '64';
     return img;
 }
 
